@@ -1,13 +1,13 @@
 import { Component } from 'react';
 import Spiner from '../Loader/Loader';
-import apiRes from '../api/service';
+import apiRes from '../services/apiService';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import LoadMoreBtn from '../Button/Button';
 import s from './ImageGallery.module.css';
 
 class ImageGallery extends Component {
   state = {
-    images: null,
+    images: [],
     isLoading: false,
     page: 1,
   };
@@ -39,7 +39,7 @@ class ImageGallery extends Component {
     if (prevQuery !== nextQuery) {
       this.setState({
         isLoading: true,
-        images: null,
+        images: [],
       });
 
       apiRes.getGalleryData(nextQuery, page).then(newImages =>
@@ -89,7 +89,9 @@ class ImageGallery extends Component {
           </ul>
         )}
         {isLoading && <Spiner />}
-        {images && <LoadMoreBtn onClick={this.handleLoadMoreImages} />}
+        {images.length > 0 && (
+          <LoadMoreBtn onClick={this.handleLoadMoreImages}> </LoadMoreBtn>
+        )}
       </>
     );
   }
