@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Spiner from '../Loader/Loader';
-import apiRes from '../services/apiService';
+import apiRes from '../../services/apiService';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import LoadMoreBtn from '../Button/Button';
 import s from './ImageGallery.module.css';
